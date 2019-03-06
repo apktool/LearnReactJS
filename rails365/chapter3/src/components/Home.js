@@ -2,20 +2,35 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            age: props.age
+        };
+        this.age = this.props.age;
+    }
+
+    onMakeOlder() {
+        this.setState(
+            {age: this.state.age + 3}
+        )
+    }
+
     render() {
         let content = "";
 
         if (content.length === 0) {
             content = "Hello Home";
+            console.info(this);
         }
-        console.log(this.props);
-
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-xs-1 col-xs-offset-11">
                         <h1>{content}</h1>
-                        <div> your name is {this.props.name}, your age is {this.props.age}</div>
+                        <div> your name is {this.props.name}, your age is {this.state.age}</div>
+                        {/*<button onClick={this.onMakeOlder.bind(this)} className="btn btn-primary">Make me older</button>*/}
+                        <button onClick={() => this.onMakeOlder()} className="btn btn-primary">Make me older</button>
                     </div>
                 </div>
                 <div className="SecondRow">
