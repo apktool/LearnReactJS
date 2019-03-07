@@ -25,6 +25,10 @@ export default class Home extends Component {
         )
     }
 
+    handleGreet() {
+        this.props.greet(this.state.age)
+    }
+
     render() {
         let content = "";
 
@@ -40,6 +44,8 @@ export default class Home extends Component {
                         <div> your name is {this.props.name}, your age is {this.state.age}</div>
                         {/*<button onClick={this.onMakeOlder.bind(this)} className="btn btn-primary">Make me older</button>*/}
                         <button onClick={() => this.onMakeOlder()} className="btn btn-primary">Make me older</button>
+                        <br/>
+                        <button onClick={this.handleGreet.bind(this)} className="btn btn-primary">Greet</button>
                         <div>Status: {this.state.status}</div>
                     </div>
                 </div>
@@ -60,5 +66,6 @@ Home.propType = {
     name: PropTypes.string,
     age: PropTypes.number,
     user: PropTypes.object,
-    children: PropTypes.element.isRequired
+    children: PropTypes.element.isRequired,
+    greet: PropTypes.func
 };

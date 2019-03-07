@@ -4,6 +4,10 @@ import Header from './components/Header';
 import Home from './components/Home';
 
 class App extends Component {
+    onGreet(age) {
+        alert(age);
+    }
+
     render() {
         const user = {
             name: "apktool",
@@ -24,7 +28,7 @@ class App extends Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-1 col-xs-offset-11">
-                        <Home name={"Max"} age={12} user={user}/>
+                        <Home name={"Max"} age={12} user={user} greet={this.onGreet}/>
                         <span>I am child</span>
                     </div>
                 </div>
