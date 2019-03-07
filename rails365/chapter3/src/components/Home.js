@@ -7,7 +7,7 @@ export default class Home extends Component {
         this.state = {
             age: props.age,
             status: 0,
-            homeLink: "Changed Link"
+            homeLink: props.initialName
         };
         this.age = this.props.age;
     }
@@ -34,6 +34,12 @@ export default class Home extends Component {
         this.props.changeLink(this.state.homeLink);
     }
 
+    onHandleChange(event) {
+        this.setState({
+            homeLink: event.target.value
+        })
+    }
+
     render() {
         let content = "";
 
@@ -53,7 +59,12 @@ export default class Home extends Component {
                         <br/>
                         <button onClick={this.handleGreet.bind(this)} className="btn btn-primary">Greet</button>
                         <br/>
+                        <input type="text"
+                               defaultValue={this.props.initialName}
+                               value={this.state.initialName}
+                               onChange={(event) => this.onHandleChange(event)}/>
                         <button onClick={this.onChangeLink.bind(this)} className="btn btn-primary">Change Header</button>
+                        <br/>
                     </div>
                 </div>
                 <div className="SecondRow">
