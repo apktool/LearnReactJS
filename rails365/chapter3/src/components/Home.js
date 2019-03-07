@@ -6,7 +6,8 @@ export default class Home extends Component {
         super(props);
         this.state = {
             age: props.age,
-            status: 0
+            status: 0,
+            homeLink: "Changed Link"
         };
         this.age = this.props.age;
     }
@@ -26,7 +27,11 @@ export default class Home extends Component {
     }
 
     handleGreet() {
-        this.props.greet(this.state.age)
+        this.props.greet(this.state.age);
+    }
+
+    onChangeLink() {
+        this.props.changeLink(this.state.homeLink);
     }
 
     render() {
@@ -42,11 +47,13 @@ export default class Home extends Component {
                     <div className="col-xs-1 col-xs-offset-11">
                         <h1>{content}</h1>
                         <div> your name is {this.props.name}, your age is {this.state.age}</div>
+                        <div>Status: {this.state.status}</div>
                         {/*<button onClick={this.onMakeOlder.bind(this)} className="btn btn-primary">Make me older</button>*/}
                         <button onClick={() => this.onMakeOlder()} className="btn btn-primary">Make me older</button>
                         <br/>
                         <button onClick={this.handleGreet.bind(this)} className="btn btn-primary">Greet</button>
-                        <div>Status: {this.state.status}</div>
+                        <br/>
+                        <button onClick={this.onChangeLink.bind(this)} className="btn btn-primary">Change Header</button>
                     </div>
                 </div>
                 <div className="SecondRow">
