@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Record from "./Record";
-import $ from 'jquery';
+import axios from 'axios';
 
 class Records extends Component {
     dataUrl = "http://localhost:3001/data";
@@ -15,11 +15,12 @@ class Records extends Component {
     }
 
     componentDidMount() {
-        $.getJSON(this.dataUrl).then(
+        axios.get(this.dataUrl).then(
             response => this.setState({
-                records: response,
+                records: response.data,
                 isLoaded: true
-            }),
+            })
+        ).catch(
             error => this.setState({
                 isLoaded: true,
                 error
@@ -32,7 +33,7 @@ class Records extends Component {
 
         if (error) {
             return (<div>
-                ERROR: {error.responseText}
+                ERROR: {error.message}
             </div>)
         } else if (!isLoaded) {
             return (<div>
