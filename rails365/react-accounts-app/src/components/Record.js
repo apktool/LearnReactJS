@@ -32,6 +32,15 @@ class Record extends Component {
         )
     }
 
+    handleDelete(event) {
+        event.preventDefault();
+        RecordsAPI.remove(this.props.record.id).then(
+            response => this.props.handleDeleteRecord(this.props.record)
+        ).catch(
+            error => console.log(error.message)
+        )
+    }
+
     recordRow() {
         return (
             <tr>
@@ -40,7 +49,7 @@ class Record extends Component {
                 <td>{this.props.record.amount}</td>
                 <td>
                     <button className={"btn btn-info mr-1"} onClick={this.handleTaggle.bind(this)}>Edit</button>
-                    <button className={"btn btn-danger"}>Delete</button>
+                    <button className={"btn btn-danger"} onClick={this.handleDelete.bind(this)}>Delete</button>
                 </td>
             </tr>
         );
@@ -49,9 +58,12 @@ class Record extends Component {
     recordForm() {
         return (
             <tr>
-                <td><input type={"text"} className={"form-control"} defaultValue={this.props.record.date} ref={"date"}/></td>
-                <td><input type={"text"} className={"form-control"} defaultValue={this.props.record.title} ref={"title"}/></td>
-                <td><input type={"text"} className={"form-control"} defaultValue={this.props.record.amount} ref={"amount"}/>
+                <td><input type={"text"} className={"form-control"} defaultValue={this.props.record.date} ref={"date"}/>
+                </td>
+                <td><input type={"text"} className={"form-control"} defaultValue={this.props.record.title}
+                           ref={"title"}/></td>
+                <td><input type={"text"} className={"form-control"} defaultValue={this.props.record.amount}
+                           ref={"amount"}/>
                 </td>
                 <td>
                     <button className={"btn btn-info mr-1"} onClick={this.handleEdit.bind(this)}>Update</button>
