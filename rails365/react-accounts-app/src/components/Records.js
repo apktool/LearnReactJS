@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import Record from "./Record";
-import axios from 'axios';
+import PropTypes from 'prop-types';
+import * as RecordsAPI from '../utils/RecordsAPI'
 
-class Records extends Component {
-    dataUrl = "http://localhost:3001/data";
-
+export default class Records extends Component {
     constructor() {
         super();
         this.state = {
@@ -15,7 +14,7 @@ class Records extends Component {
     }
 
     componentDidMount() {
-        axios.get(this.dataUrl).then(
+        RecordsAPI.getAll().then(
             response => this.setState({
                 records: response.data,
                 isLoaded: true
@@ -62,4 +61,9 @@ class Records extends Component {
     }
 }
 
-export default Records;
+Records.prototypes = {
+    id: PropTypes.number,
+    date: PropTypes.string,
+    titile: PropTypes.string,
+    amount: PropTypes.number
+};
