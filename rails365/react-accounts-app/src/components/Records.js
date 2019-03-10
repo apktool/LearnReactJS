@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Record from "./Record";
 import PropTypes from 'prop-types';
-import * as RecordsAPI from '../utils/RecordsAPI'
+import * as RecordsAPI from '../utils/RecordsAPI';
+import RecordForm from './RecordForm';
 
 export default class Records extends Component {
     constructor() {
@@ -27,21 +28,33 @@ export default class Records extends Component {
         )
     }
 
+    addRecord(record) {
+        this.setState({
+            error: null,
+            isLoaded: true,
+            records: [
+                ...this.state.records,
+                record
+            ]
+        })
+    }
+
     render() {
         const {error, isLoaded, records} = this.state;
 
+        let recordsComponent;
+
         if (error) {
-            return (<div>
+            recordsComponent = <div>
                 ERROR: {error.message}
-            </div>)
+            </div>
         } else if (!isLoaded) {
-            return (<div>
+            recordsComponent = <div>
                 Loading...
-            </div>)
+            </div>
         } else {
-            return (
+            recordsComponent = (
                 <div>
-                    <h1>Record</h1>
                     <table className={"table table-bordered"}>
                         <thead>
                         <tr>
@@ -56,8 +69,16 @@ export default class Records extends Component {
                         </tbody>
                     </table>
                 </div>
-            );
+            )
         }
+
+        return (
+            <div>
+                <h2>Records</h2>
+                <RecordForm handleNewRecord={this.addRecord.bind(this)}/>
+                {recordsComponent}
+            </div>
+        )
     }
 }
 
