@@ -41,10 +41,11 @@ class App extends Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-1 col-xs-offset-11">
-                        <Home name={"Max"} age={12} user={user} greet={this.onGreet}
+                        <Home name={user.name} age={12} user={user} greet={this.onGreet}
                               changeLink={this.onChangeLinkName.bind(this)}
-                              initialName={this.state.homeLink}/>
-                        <span>I am child</span>
+                              initialName={this.state.homeLink}
+                              children={"I am child"}
+                        />
                     </div>
                 </div>
             </div>
