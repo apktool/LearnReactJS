@@ -37,6 +37,7 @@ bower_components
 *.launch
 .settings/
 *.sublime-workspace
+*.iml
 
 # IDE - VSCode
 .vscode/*
@@ -89,3 +90,5 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
+package-lock.json
+
