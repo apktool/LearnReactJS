@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import store from './store'
-import {addItemAction, changeInputAction, deleteItemAction} from "./store/ActionCreator";
+import {addItemAction, changeInputAction, deleteItemAction, getListAction} from "./store/ActionCreator";
 import AppUi from "./AppUi";
+import axios from "axios";
 
 class App extends Component {
 
@@ -10,6 +11,14 @@ class App extends Component {
         this.state = store.getState()
 
         store.subscribe(() => this.setState(store.getState()))
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:3001/db").then((res) => {
+            const data = res.data
+            const action = getListAction(data)
+            store.dispatch(action)
+        })
     }
 
     changeInputValue(msg) {
