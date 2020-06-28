@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import store from './store'
-import 'antd/dist/antd.css'
 import {addItemAction, changeInputAction, deleteItemAction} from "./store/ActionCreator";
 import AppUi from "./AppUi";
 
