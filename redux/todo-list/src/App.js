@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import store from './store'
-import {addItemAction, changeInputAction, deleteItemAction, getListByThunk} from "./store/ActionCreator";
+import {addItemAction, changeInputAction, deleteItemAction, getListBySaga} from "./store/ActionCreator";
 import AppUi from "./AppUi";
 
 class App extends Component {
@@ -8,12 +8,12 @@ class App extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = store.getState()
-
-        store.subscribe(() => this.setState(store.getState()))
     }
 
     componentDidMount() {
-        const action = getListByThunk();
+        store.subscribe(() => this.setState(store.getState()))
+
+        const action = getListBySaga();
         store.dispatch(action)
     }
 

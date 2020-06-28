@@ -1,4 +1,4 @@
-import {ADDITEM, CHANGEINPUT, DELETEITEM, GETLIST} from "./ActionTypes";
+import {ADDITEM, CHANGEINPUT, DELETEITEM, GETLIST, GETMYLIST} from "./ActionTypes";
 import axios from "axios";
 
 export const changeInputAction = (value) => ({
@@ -29,3 +29,7 @@ export const getListByThunk = () => {
         })
     }
 }
+
+export const getListBySaga = () => ({
+    type: GETMYLIST
+})
