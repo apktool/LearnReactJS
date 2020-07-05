@@ -14,6 +14,7 @@ class Index extends Component {
             ]
         }
 
+        this.props.history.push("/home/")
     }
 
     render() {
