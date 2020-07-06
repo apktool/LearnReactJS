@@ -1,17 +1,22 @@
 import React, {useState} from 'react';
 
 function App() {
-    const [count, setCount] = useState(0)
+    const [name] = useState("apktool")
+    const [age, setAge] = useState(18)
+    const [work] = useState("IT")
 
     return (
         <div>
-            <p>You Clicked {count} times</p>
-            <button onClick={
-                () => {
-                    setCount(count + 1)
-                }}>
-                Click Me
-            </button>
+            <div>name: {name}</div>
+            <div>work: {work}</div>
+            <div>age: {age}
+                <button onClick={
+                    () => {
+                        setAge(age + 1)
+                    }}>
+                    Add Age
+                </button>
+            </div>
         </div>
     )
 }
