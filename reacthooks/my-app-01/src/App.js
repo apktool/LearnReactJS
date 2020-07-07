@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useReducer, useState} from 'react';
 
 const CountContext = createContext()
 
@@ -12,6 +12,17 @@ function App() {
     const [name] = useState("apktool")
     const [age, setAge] = useState(18)
     const [work] = useState("IT")
+
+    const [score, dispatch] = useReducer((state, action) => {
+        switch (action) {
+            case "add":
+                return state + 1
+            case "sub":
+                return state - 1
+            default:
+                return state
+        }
+    }, 0)
 
     useEffect(() => {
             console.log(`useEffect => ${age} `)
@@ -37,6 +48,11 @@ function App() {
                     }}>
                     Add Age
                 </button>
+            </div>
+            <div>
+                <h2>score is {score}</h2>
+                <button onClick={() => {dispatch("add")}}> ADD </button>
+                <button onClick={() => {dispatch("sub")}}> SUB </button>
             </div>
         </div>
     )
