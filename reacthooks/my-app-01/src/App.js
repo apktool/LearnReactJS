@@ -1,4 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
+
+const CountContext = createContext()
+
+function Counter() {
+    let count = useContext(CountContext)
+    return (<h2>{count}</h2>)
+}
+
 
 function App() {
     const [name] = useState("apktool")
@@ -16,6 +24,10 @@ function App() {
 
     return (
         <div>
+            <CountContext.Provider value={age}>
+                <Counter/>
+            </CountContext.Provider>
+
             <div>name: {name}</div>
             <div>work: {work}</div>
             <div>age: {age}
