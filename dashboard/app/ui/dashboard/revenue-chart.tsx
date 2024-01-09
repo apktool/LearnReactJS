@@ -1,7 +1,6 @@
 import {fetchRevenue, generateYAxis} from "@/app/lib/data";
 import {CalendarIcon} from '@heroicons/react/24/outline';
 import {lusitana} from "@/app/ui/fonts";
-import * as console from "console";
 
 export default async function RevenueChart() {
     const revenue = await fetchRevenue()
