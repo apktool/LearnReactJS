@@ -1,5 +1,9 @@
+import "/app/styles/globals.scss"
+
+import styles from "/app/home.module.scss";
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
+import {getClientConfig} from "@/app/config/client";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -11,7 +15,15 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: { children: React.ReactNode }) {
     return (
         <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <head>
+            <meta name="config" content={JSON.stringify(getClientConfig())}/>
+            <link rel="manifest" href="/site.webmanifest"></link>
+        </head>
+        <body className={"inter.className"}>
+        <div className={styles.container}>
+            {children}
+        </div>
+        </body>
         </html>
     )
 }
