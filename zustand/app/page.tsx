@@ -8,8 +8,8 @@ type State = {
 }
 
 type Actions = {
-    inc: (cnt: number) => void
-    dec: (cnt: number) => void
+    inc: () => void
+    dec: () => void
 }
 
 
@@ -19,8 +19,8 @@ const useCountStore = create<State & Actions>()(
             {count: 1},
             (set, get) => (
                 {
-                    inc: (cnt: number) => set((state) => ({count: state.count + cnt})),
-                    dec: (cnt: number) => set((state) => ({count: state.count - cnt})),
+                    inc: () => set(() => ({count: get().count + 1})),
+                    dec: () => set(() => ({count: get().count - 1})),
                 }
             )
         ),
@@ -37,8 +37,8 @@ export default function Home() {
     return (
         <main>
             <h1>{count}</h1>
-            <button onClick={() => inc(1)}>+1</button>
-            <button onClick={() => dec(1)}>-1</button>
+            <button onClick={() => inc()}>+1</button>
+            <button onClick={() => dec()}>-1</button>
         </main>
     );
 }
