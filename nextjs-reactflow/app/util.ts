@@ -15,7 +15,7 @@ export function generateNode() {
         data: {
             label: `toolbar always open, id=${id}`,
             toolbarPosition: "top",
-            toolbarVisible: true
+            toolbarVisible: false
         },
         position: {
             x: Math.round(512 + Math.random() * (300 - 100)),

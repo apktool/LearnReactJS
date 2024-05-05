@@ -3,7 +3,7 @@ import {useFlow} from "@/app/flow";
 
 function SidebarContent() {
     const {setIsOpened} = useFlowContext()
-    const {onNodeAdd} = useFlow()
+    const {handleNodeAdd} = useFlow()
 
     return (
         <>
@@ -30,7 +30,7 @@ function SidebarContent() {
                     height: "30px",
                     cursor: "pointer",
                 }}
-                onClick={() => onNodeAdd()}>
+                onClick={() => handleNodeAdd()}>
                 Add new node
             </button>
         </>);

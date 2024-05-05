@@ -1,9 +1,13 @@
 import {memo} from "react";
-import {Handle, Node, NodeToolbar, Position} from "reactflow";
+import {Handle, NodeProps, NodeToolbar, Position} from "reactflow";
 import {useFlowContext} from "@/app/context";
+import {NodeData} from "@/app/types";
 
-const CustomNode = ({id, selected, data}: Node) => {
+const CustomNode = (props: NodeProps<NodeData>) => {
     const {isOpened, setIsOpened} = useFlowContext()
+
+    const data = props.data
+    const selected = props.selected
 
     return (
         <div>
